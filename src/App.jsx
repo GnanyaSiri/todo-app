@@ -86,6 +86,22 @@ function App() {
     )
   }
 
+  // Edit Todo
+  const editTodo = (id, updatedData) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              title: updatedData.title,
+              priority: updatedData.priority,
+              category: updatedData.category,
+            }
+          : todo
+      )
+    )
+  }
+
   // Search + Category Filter
   const filteredTodos = todos.filter((todo) => {
     const matchesSearch = todo.title
@@ -170,6 +186,7 @@ function App() {
             todos={filteredTodos}
             onToggleTodo={toggleTodo}
             onDeleteTodo={deleteTodo}
+            onEditTodo={editTodo}
           />
         )}
 
